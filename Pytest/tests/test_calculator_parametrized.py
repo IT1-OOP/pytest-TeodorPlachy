@@ -1,29 +1,81 @@
 import pytest
 from src import calculator
 
-def test_add():
-    assert calculator.add(1,2) == 3
-    assert calculator.add(0,5) == 5
-    assert calculator.add(-2,9) == 7
-    assert calculator.add(5, -8) == -3
-
-def test_add_2():
-    assert calculator.add_wrong(1,2) == 3
-    assert calculator.add_wrong(0,5) == 5
-    assert calculator.add_wrong(-2,9) == 7
-    assert calculator.add_wrong(0,0) == 0
-
 @pytest.mark.parametrize(
     "a, b, expected",
     [
-        (1, 2, 3),
-        (0, 5, 5),
+        (1,3,4),
+        (0,5,5),
         (-2, 9, 7),
-        (5, -8, -3),
-    ],
+        (5,-8,-3),
+    ]
 )
+
+
 def test_add_parametrized(a, b, expected):
     assert calculator.add(a, b) == expected
 
+@pytest.mark.parametrize(
+    "x, y, expected_result",
+    [
+        (1,3,4),
+        (0,5,5),
+        (-2, 9, 7),
+        (5,-8,-3),
+    ]
+)
 
+def test_add_wrong_parametrized(x, y, expected_result):
+    assert calculator.add_wrong(x, y) == expected_result
 
+@pytest.mark.parametrize(
+    "s, d, expected_result_1",
+    [
+        (1,3,4),
+        (0,5,5),
+        (-2, 9, 7),
+        (5,-8,-3),
+    ]
+)
+
+def test_subtract_parametrized(s, d, expected_result_1):
+    assert calculator.subtract(s, d) == expected_result_1
+
+@pytest.mark.parametrize(
+    "q, w, expected_result_2",
+    [
+        (1,3,4),
+        (0,5,5),
+        (-2, 9, 7),
+        (5,-8,-3),
+    ]
+)
+
+def test_multiply_parametrized(q, w, expected_result_2):
+    assert calculator.multiply(q, w) == expected_result_2
+
+@pytest.mark.parametrize(
+    "e, r, expected_result_3",
+    [
+        (1,3,4),
+        (0,5,5),
+        (-2, 9, 7),
+        (5,-8,-3),
+    ]
+)
+
+def test_multiply_wrong_parametrized(e, r, expected_result_3):
+    assert calculator.multiply_wrong(e, r) == expected_result_3
+
+@pytest.mark.parametrize(
+    "t, z, expected_result_4",
+    [
+        (1,3,4),
+        (0,5,5),
+        (-2, 9, 7),
+        (5,-8,-3),
+    ]
+)
+
+def test_divide_parametrized(t, z, expected_result_4):
+    assert calculator.divide(t, z) == expected_result_4
